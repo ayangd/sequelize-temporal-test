@@ -1,22 +1,23 @@
-import React from 'react';
 import { createUseStyles } from 'react-jss';
+import InputPanel from './components/InputPanel';
 
 const useStyles = createUseStyles({
-  App: {
-    width: '100vw',
-    height: '100vh',
-    overflow: 'hidden',
-  },
+    App: {
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+    },
 });
 
 function App() {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  return (
-    <div className={classes.App}>
-      
-    </div>
-  );
+    return (
+        <div className={classes.App}>
+            <InputPanel />
+        </div>
+    );
 }
 
 export default App;
