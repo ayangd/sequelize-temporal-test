@@ -38,6 +38,7 @@ button {
     border: none;
     font-weight: medium;
     padding: 8px;
+    transition: 0.1s;
     &:hover {
         background-color: rgba(0, 0, 0, 0.5);
         cursor: pointer;

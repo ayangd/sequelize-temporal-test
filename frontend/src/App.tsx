@@ -1,5 +1,6 @@
 import { createUseStyles } from 'react-jss';
-import InputPanel from './components/InputPanel';
+import LeftPanel from './components/LeftPanel';
+import MiddlePanel from './components/MiddlePanel';
 
 const useStyles = createUseStyles({
     App: {
@@ -7,6 +8,8 @@ const useStyles = createUseStyles({
         width: '100vw',
         height: '100vh',
         overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'row',
     },
 });
 
@@ -15,7 +18,8 @@ function App() {
 
     return (
         <div className={classes.App}>
-            <InputPanel />
+            <LeftPanel />
+            <MiddlePanel />
         </div>
     );
 }

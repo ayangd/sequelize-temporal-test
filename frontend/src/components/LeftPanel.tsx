@@ -4,8 +4,8 @@ import PanelContainer from './panel/Container';
 import PanelTitle from './panel/Title';
 
 const useStyles = createUseStyles({
-    InputPanel: {
-        position: 'absolute',
+    LeftPanel: {
+        position: 'relative',
         left: '0',
         backgroundColor: '#ddd',
         boxShadow: '2px 0 4px #aaa',
@@ -16,11 +16,11 @@ const useStyles = createUseStyles({
     },
 });
 
-function InputPanel() {
+function LeftPanel() {
     const classes = useStyles();
 
     return (
-        <PanelContainer className={classes.InputPanel}>
+        <PanelContainer className={classes.LeftPanel}>
             <PanelTitle text="Yes" />
             <PanelCaption text="Input this" />
             <input type="text" />
@@ -29,4 +29,4 @@ function InputPanel() {
     );
 }
 
-export default InputPanel;
+export default LeftPanel;
