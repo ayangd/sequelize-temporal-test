@@ -1,18 +1,36 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 
-const app = express();
+import { sequelize } from './models';
+import routes from './routes';
 
-app.get(
-    /^\/(?!api).*/,
-    express.static(path.join(__dirname, '../../frontend/build'))
-);
+// Blocking, sync db first then open the server listener
+(async () => {
+    await sequelize.sync();
 
-app.get('/api/test', (req, res) => {
-    res.send('Yes');
-});
+    const app = express();
+    var corsOptions = {
+        origin: 'http://localhost:3000',
+        credentials: true,
+    };
+    app.use(cors(corsOptions));
 
-const port = 8080;
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+    app.use(express.json());
+
+    app.use(routes());
+
+    app.get(
+        /^\/(?!api).*/,
+        express.static(path.join(__dirname, '../../frontend/build'))
+    );
+
+    app.get('/api/test', (req, res) => {
+        res.send('Yes');
+    });
+
+    const port = 8080;
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+})();

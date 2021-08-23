@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
 });
 
 export type PanelContainerProps = {
-    children?: React.ReactNode[];
+    children?: React.ReactNode[] | React.ReactNode;
     className?: string;
 };
 

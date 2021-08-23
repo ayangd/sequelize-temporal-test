@@ -2,39 +2,43 @@ import { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-    TabContainer: {
+    TabContainer: (sideTab: boolean) => ({
+        height: sideTab ? '100%' : '',
         display: 'flex',
-        flexDirection: 'column',
-    },
-    TabContainerTabs: {
+        flexDirection: sideTab ? 'row' : 'column',
+    }),
+    TabContainerTabs: (sideTab: boolean) => ({
         backgroundColor: '#eee',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: sideTab ? 'row-reverse' : 'row',
         maxWidth: '100%',
         flexWrap: 'wrap-reverse',
-    },
-    TabContainerTab: {
+        writingMode: sideTab ? 'sideways-lr' : '',
+    }),
+    TabContainerTab: (sideTab: boolean) => ({
         backgroundColor: '#ddd',
-        padding: '8px 24px',
+        padding: sideTab ? '24px 8px' : '8px 24px',
         cursor: 'pointer',
-    },
+    }),
     TabContainerTabActive: {
-        backgroundColor: '#fff',
+        backgroundColor: '#fff !important',
     },
-    TabContainerBody: {
+    TabContainerBody: (sideTab: boolean) => ({
         flexGrow: '1',
         padding: '16px',
-    },
+        width: sideTab ? '0' : '',
+    }),
 });
 
 export type TabContainerProps = {
     className?: string;
-    children?: React.ReactNode[];
+    children?: React.ReactNode[] | React.ReactNode;
     titles?: string[];
+    sideTab?: boolean;
 };
 
 function TabContainer(props: TabContainerProps) {
-    const classes = useStyles();
+    const classes = useStyles(props.sideTab ?? false);
     const className = [props.className, classes.TabContainer]
         .filter((x) => x)
         .join(' ');
@@ -58,12 +62,25 @@ function TabContainer(props: TabContainerProps) {
         }
     }
 
+    const containers = [];
+    if (props.children !== undefined) {
+        if (Array.isArray(props.children)) {
+            for (let i = 0; i < props.children.length; i++) {
+                containers.push(
+                    <div style={{ display: tab === i ? '' : 'none' }}>
+                        {props.children[i]}
+                    </div>
+                );
+            }
+        } else {
+            containers.push(props.children);
+        }
+    }
+
     return (
         <div className={className}>
             <div className={classes.TabContainerTabs}>{tabs}</div>
-            <div className={classes.TabContainerBody}>
-                {props?.children?.[tab]}
-            </div>
+            <div className={classes.TabContainerBody}>{containers}</div>
         </div>
     );
 }

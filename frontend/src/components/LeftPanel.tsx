@@ -1,18 +1,21 @@
+import axios from 'axios';
 import { createUseStyles } from 'react-jss';
-import PanelCaption from './panel/Caption';
+import AddModelPanel from './AddModelPanel';
+import EditModelPanel from './EditModelPanel';
+import { getSelectedDataModelId, updateModelTable } from './ModelTable';
 import PanelContainer from './panel/Container';
-import PanelTitle from './panel/Title';
+import TabContainer from './tab/Container';
 
 const useStyles = createUseStyles({
     LeftPanel: {
         position: 'relative',
         left: '0',
-        backgroundColor: '#ddd',
         boxShadow: '2px 0 4px #aaa',
         height: '100%',
-        width: '200px',
-        padding: '12px',
+        width: '300px',
         gap: '8px',
+        overflowX: 'auto',
+        resize: 'horizontal',
     },
 });
 
@@ -21,10 +24,10 @@ function LeftPanel() {
 
     return (
         <PanelContainer className={classes.LeftPanel}>
-            <PanelTitle text="Yes" />
-            <PanelCaption text="Input this" />
-            <input type="text" />
-            <button>Test</button>
+            <TabContainer titles={['Add Model', 'Edit Model']} sideTab>
+                <AddModelPanel />
+                <EditModelPanel />
+            </TabContainer>
         </PanelContainer>
     );
 }
