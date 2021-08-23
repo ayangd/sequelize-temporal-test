@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
         backgroundColor: '#eee',
         display: 'flex',
         flexDirection: 'row',
+        maxWidth: '100%',
         flexWrap: 'wrap-reverse',
     },
     TabContainerTab: {
@@ -22,6 +23,7 @@ const useStyles = createUseStyles({
     },
     TabContainerBody: {
         flexGrow: '1',
+        padding: '16px',
     },
 });
 
