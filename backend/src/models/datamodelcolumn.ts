@@ -1,5 +1,6 @@
 import { INTEGER, STRING } from 'sequelize';
 import { Model, Sequelize } from 'sequelize';
+import Temporal from 'sequelize-temporal';
 
 export interface DataModelColumnAttributes {
     dataModelId: number;
@@ -8,7 +9,7 @@ export interface DataModelColumnAttributes {
 }
 
 export class DataModelColumn
-    extends Model<DataModelColumnAttributes, DataModelColumnAttributes>
+    extends Model<DataModelColumnAttributes>
     implements DataModelColumnAttributes
 {
     dataModelId!: number;
@@ -20,22 +21,25 @@ export class DataModelColumn
 }
 
 function initDataModelColumn(sequelize: Sequelize) {
-    return DataModelColumn.init(
-        {
-            dataModelId: {
-                type: INTEGER.UNSIGNED,
-                allowNull: false,
+    return Temporal(
+        DataModelColumn.init(
+            {
+                dataModelId: {
+                    type: INTEGER.UNSIGNED,
+                    allowNull: false,
+                },
+                name: {
+                    type: STRING,
+                    allowNull: false,
+                },
+                type: {
+                    type: STRING,
+                    allowNull: false,
+                },
             },
-            name: {
-                type: STRING,
-                allowNull: false,
-            },
-            type: {
-                type: STRING,
-                allowNull: false,
-            },
-        },
-        { tableName: 'DataModelColumn', sequelize }
+            { tableName: 'DataModelColumn', sequelize }
+        ),
+        sequelize
     );
 }
 

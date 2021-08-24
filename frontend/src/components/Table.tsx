@@ -12,7 +12,7 @@ const useStyles = createUseStyles({
         '& tr:nth-child(n+2)': {
             cursor: 'pointer',
             '&:hover': {
-                backgroundColor: '#bbb',
+                backgroundColor: '#eee',
                 '&.active': {
                     backgroundColor: '#aaa',
                 },

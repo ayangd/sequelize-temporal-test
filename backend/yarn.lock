@@ -770,7 +770,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-lodash@^4.17.20:
+lodash@^4.17.15, lodash@^4.17.20:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -1222,6 +1222,13 @@ sequelize-pool@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/sequelize-pool/-/sequelize-pool-6.1.0.tgz#caaa0c1e324d3c2c3a399fed2c7998970925d668"
   integrity sha512-4YwEw3ZgK/tY/so+GfnSgXkdwIJJ1I32uZJztIEgZeAO6HMgj64OzySbWLgxj+tXhZCJnzRfkY9gINw8Ft8ZMg==
+
+sequelize-temporal@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/sequelize-temporal/-/sequelize-temporal-1.0.8.tgz#0edda08c85237d5a99dd59d542381878c30a74e3"
+  integrity sha512-Xcco7JcOiOx0nm3jGEMFJpP43CgJC9sbQ5tmA1DNp7MDSZ1Sdz/Yld776C2tWOcwJ/vgmaL+E4kf/0+kTb5njg==
+  dependencies:
+    lodash "^4.17.15"
 
 sequelize@^6.6.5:
   version "6.6.5"

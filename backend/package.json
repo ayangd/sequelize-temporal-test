@@ -13,6 +13,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "sequelize": "^6.6.5",
+    "sequelize-temporal": "^1.0.8",
     "sqlite3": "^5.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"

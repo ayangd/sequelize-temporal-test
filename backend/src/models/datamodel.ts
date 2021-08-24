@@ -9,6 +9,7 @@ import {
     Optional,
     Sequelize,
 } from 'sequelize';
+import Temporal from 'sequelize-temporal';
 import { DataModelColumn } from './datamodelcolumn';
 
 export interface DataModelAttributes {
@@ -39,23 +40,26 @@ class DataModel
 }
 
 function initDataModel(sequelize: Sequelize) {
-    return DataModel.init(
-        {
-            id: {
-                type: INTEGER.UNSIGNED,
-                autoIncrement: true,
-                primaryKey: true,
+    return Temporal(
+        DataModel.init(
+            {
+                id: {
+                    type: INTEGER.UNSIGNED,
+                    autoIncrement: true,
+                    primaryKey: true,
+                },
+                name: {
+                    type: STRING,
+                    allowNull: false,
+                },
+                description: {
+                    type: STRING,
+                    allowNull: true,
+                },
             },
-            name: {
-                type: STRING,
-                allowNull: false,
-            },
-            description: {
-                type: STRING,
-                allowNull: true,
-            },
-        },
-        { tableName: 'DataModel', sequelize }
+            { tableName: 'DataModel', sequelize }
+        ),
+        sequelize
     );
 }
 

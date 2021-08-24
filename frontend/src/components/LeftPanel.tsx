@@ -1,8 +1,6 @@
-import axios from 'axios';
 import { createUseStyles } from 'react-jss';
 import AddModelPanel from './AddModelPanel';
 import EditModelPanel from './EditModelPanel';
-import { getSelectedDataModelId, updateModelTable } from './ModelTable';
 import PanelContainer from './panel/Container';
 import TabContainer from './tab/Container';
 

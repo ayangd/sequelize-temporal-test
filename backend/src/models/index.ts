@@ -11,3 +11,4 @@ DataModel.hasMany(DataModelColumn, {
     foreignKey: 'dataModelId',
     as: 'columns',
 });
+console.log(DataModel.rawAttributes);
